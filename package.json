@@ -1,0 +1,18 @@
+{
+  "name": "type-level-fizzbuzz",
+  "version": "0.0.0",
+  "description": "Type Level FizzBuzz in TypeScript",
+  "main": "fizzbuzz.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "types"
+  ],
+  "author": "Gabriele Lana <gabriele.lana@gmail.com> (http://github.com/gabrielelana)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "typescript-language-server": "^0.8.1"
+  }
+}
