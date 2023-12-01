@@ -127,7 +127,7 @@ type Decrement<X extends Natural> = EQ<X, Zero> extends true
 type DivMod<
   N extends Natural,
   M extends Natural,
-  Q extends Natural = Zero
+  Q extends Natural = Zero,
 > = N extends `${infer X}${M}` ? DivMod<X, M, Increment<Q>> : Tuple<Q, N>;
 
 type Div<N extends Natural, M extends Natural> = Left<DivMod<N, M>>;
@@ -140,7 +140,7 @@ type Sub<N extends Natural, M extends Natural> = N extends `${infer R}${M}`
 type Mul<
   N extends Natural,
   M extends Natural,
-  A extends Natural = Zero
+  A extends Natural = Zero,
 > = M extends Zero ? A : Mul<N, Decrement<M>, Add<N, A>>;
 
 type _00300 = Assert<EQ_<One, Increment<Zero>>>;
@@ -212,7 +212,7 @@ type Tail<L> = L extends string
 
 type ReverseS<
   S extends string,
-  A extends string = ""
+  A extends string = "",
 > = S extends `${infer H}${infer T}` ? ReverseS<T, ConcatS<H, A>> : A;
 type ReverseA<L extends Array<any>, A extends Array<any> = []> = L extends []
   ? A
@@ -235,7 +235,7 @@ type Last<L> = L extends string
 
 type NthA<N extends Natural, X extends Array<any>> = X extends [
   infer H,
-  ...infer T
+  ...infer T,
 ]
   ? N extends Zero
     ? H
@@ -243,7 +243,7 @@ type NthA<N extends Natural, X extends Array<any>> = X extends [
   : never;
 type NthS<
   N extends Natural,
-  X extends string
+  X extends string,
 > = X extends `${infer H}${infer T}`
   ? N extends Zero
     ? H
@@ -309,7 +309,7 @@ type ToString<N extends Natural, S extends string = ""> = N extends Zero
 type FromString<
   N extends String,
   M extends Natural = One,
-  R extends Natural = Zero
+  R extends Natural = Zero,
 > = N extends ""
   ? R
   : N extends `${infer D}0`
@@ -360,7 +360,7 @@ type FizzBuzz<N extends Natural> = N extends Zero
 // Surprisingly easy and tail recursive.
 type FizzBuzzTo<
   N extends Natural,
-  A extends Array<string> = []
+  A extends Array<string> = [],
 > = N extends Zero ? A : FizzBuzzTo<Decrement<N>, [FizzBuzz<N>, ...A]>;
 
 type _070 = Assert<
@@ -380,7 +380,7 @@ type _070 = Assert<
       "Fizz",
       "13",
       "14",
-      "FizzBuzz"
+      "FizzBuzz",
     ],
     FizzBuzzTo<FromString<"15">>
   >
